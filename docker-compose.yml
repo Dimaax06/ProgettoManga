@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: dimangax-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: dimangax_root
+      MYSQL_DATABASE: dimangax
+      MYSQL_USER: dimangax
+      MYSQL_PASSWORD: dimangax_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./backend/database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: dimangax-api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 5000
+      DB_HOST: db
+      DB_USER: dimangax
+      DB_PASSWORD: dimangax_pass
+      DB_NAME: dimangax
+      JWT_SECRET: change_this_in_production_super_secret_key
+      CORS_ORIGIN: http://localhost:5173
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    container_name: dimangax-web
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  db_data:

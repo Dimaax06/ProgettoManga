@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-neon-red: #ef4444;
+    --color-neon-red-bright: #ff3333;
+    --color-neon-purple: #7c3aed;
+    --color-dark-bg: #0a0a0a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #ef4444 #111111;
+  }
+
+  html::-webkit-scrollbar { width: 6px; }
+  html::-webkit-scrollbar-track { background: #111111; }
+  html::-webkit-scrollbar-thumb { background: #ef4444; border-radius: 3px; }
+
+  body {
+    @apply bg-[#0a0a0a] text-white;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  #root { min-height: 100vh; }
+}
+
+@layer components {
+  .neon-text-red {
+    color: #ef4444;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.4);
+  }
+
+  .neon-text-purple {
+    color: #7c3aed;
+    text-shadow: 0 0 10px rgba(124, 58, 237, 0.8), 0 0 30px rgba(124, 58, 237, 0.4);
+  }
+
+  .neon-border-red {
+    border-color: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(239, 68, 68, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-red {
+    background: rgba(239, 68, 68, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+  }
+
+  .btn-neon {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm tracking-wider uppercase;
+    background: transparent;
+    border: 1.5px solid #ef4444;
+    color: #ef4444;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.3s ease;
+  }
+
+  .btn-neon:hover {
+    background: rgba(239, 68, 68, 0.15);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+    color: #fff;
+  }
+
+  .btn-neon-filled {
+    @apply btn-neon;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: white;
+    border-color: transparent;
+  }
+
+  .btn-neon-filled:hover {
+    background: linear-gradient(135deg, #ff3333, #ef4444);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+  }
+
+  .manga-card {
+    @apply relative overflow-hidden rounded-lg cursor-pointer;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: #171717;
+  }
+
+  .manga-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2);
+  }
+
+  .manga-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.95) 100%);
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .manga-card:hover::before {
+    background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.97) 100%);
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl tracking-wider uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .page-transition {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #1f1f1f 25%, #2a2a2a 50%, #1f1f1f 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .katana-divider {
+    @apply relative flex items-center gap-4 my-8;
+  }
+
+  .katana-divider::before,
+  .katana-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(239, 68, 68, 0.6), transparent);
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .star-filled { color: #fbbf24; }
+  .star-empty { color: #3a3a3a; }
+
+  input, textarea, select {
+    @apply bg-dark-300 border border-dark-500 rounded-lg px-4 py-3 text-white placeholder-gray-600;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wide;
+  }
+  .badge-red { @apply badge bg-red-950 text-red-400 border border-red-900; }
+  .badge-green { @apply badge bg-green-950 text-green-400 border border-green-900; }
+  .badge-yellow { @apply badge bg-yellow-950 text-yellow-400 border border-yellow-900; }
+  .badge-gray { @apply badge bg-zinc-900 text-zinc-400 border border-zinc-800; }
+  .badge-purple { @apply badge bg-purple-950 text-purple-400 border border-purple-900; }
+}
+
+@layer utilities {
+  .text-gradient-red {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-mesh {
+    background-image:
+      radial-gradient(at 20% 20%, rgba(239, 68, 68, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.3) !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+.swiper-pagination-bullet-active {
+  background: #ef4444 !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6) !important;
+}
+.swiper-button-next, .swiper-button-prev {
+  color: #ef4444 !important;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 20px !important;
+}
