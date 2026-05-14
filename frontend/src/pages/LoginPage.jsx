@@ -20,13 +20,14 @@ const LoginPage = () => {
 
   const submit = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     try {
-      await login(form.email, form.password);
+      await login(form.email.trim(), form.password);
       toast.success('Welcome back!');
       navigate(from, { replace: true });
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Login failed');
+      toast.error(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }

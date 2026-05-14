@@ -151,22 +151,24 @@ const AdminPage = () => {
 
   const loadData = useCallback(async () => {
     setLoading(true);
-    try {
-      const [s, u, m] = await Promise.all([
-        api.get('/admin/stats'),
-        api.get('/admin/users?limit=50'),
-        api.get('/manga?limit=50&sort=created_at&order=DESC'),
-      ]);
-      setStats(s.data);
-      setUsers(u.data.users || []);
-      setManga(m.data.manga || []);
-    } catch (err) {
-      const msg = err.response?.data?.error || err.message || 'Network error';
-      toast.error(`Failed to load admin data: ${msg}`);
-      console.error('Admin load error:', err.response?.status, msg);
-    } finally {
-      setLoading(false);
+    const results = await Promise.allSettled([
+      api.get('/admin/stats'),
+      api.get('/admin/users?limit=50'),
+      api.get('/manga?limit=50&sort=created_at&order=DESC'),
+    ]);
+    const [s, u, m] = results;
+    if (s.status === 'fulfilled') setStats(s.value.data);
+    if (u.status === 'fulfilled') setUsers(u.value.data.users || []);
+    if (m.status === 'fulfilled') setManga(m.value.data.manga || []);
+
+    const failed = results.filter(r => r.status === 'rejected');
+    if (failed.length > 0) {
+      const firstErr = failed[0].reason;
+      const msg = firstErr?.response?.data?.error || firstErr?.message || 'Network error';
+      toast.error(`Some admin data failed to load: ${msg}`);
+      console.error('Admin load errors:', failed.map(f => f.reason));
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {

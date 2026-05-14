@@ -36,14 +36,20 @@ const RegisterPage = () => {
 
   const submit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+    const username = form.username.trim();
+    const email = form.email.trim();
+    if (username.length < 3) { toast.error('Username must be at least 3 characters'); return; }
+    if (!/^[a-zA-Z0-9_-]+$/.test(username)) { toast.error('Username can only contain letters, numbers, _ and -'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast.error('Please enter a valid email'); return; }
     if (form.password.length < 6) { toast.error('Password must be at least 6 characters'); return; }
     setLoading(true);
     try {
-      await register(form.username, form.email, form.password);
+      await register(username, email, form.password);
       toast.success('Welcome to DiMangaX!');
       navigate('/');
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Registration failed');
+      toast.error(err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }
