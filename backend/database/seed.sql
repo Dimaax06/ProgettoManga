@@ -2,11 +2,11 @@ USE dimangax;
 
 -- Admin user (password: admin123)
 INSERT IGNORE INTO users (id, username, email, password_hash, role) VALUES
-('admin-uuid-0001', 'DiMangaX_Admin', 'admin@dimangax.com', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/RK3jB4dZy', 'admin');
+('admin-uuid-0001', 'DiMangaX_Admin', 'admin@dimangax.com', '$2a$12$gf4BTWCwQ.tMDMxpbiC24uX64X9OPhqMDHCY/bRenP8fDaAZJzSQm', 'admin');
 
 -- Demo user (password: demo123)
 INSERT IGNORE INTO users (id, username, email, password_hash, role, bio) VALUES
-('user-uuid-0001', 'OtakuPrime', 'demo@dimangax.com', '$2a$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uJne/oYSa.', 'user', 'Hardcore manga reader since 2010. Fan of dark fantasy and psychological thrillers.');
+('user-uuid-0001', 'OtakuPrime', 'demo@dimangax.com', '$2a$12$EIACPFj9GBw1GoMoZ44Q/uHmTQciqZE35uBSj2cdfYZL9ohZ2XFs2', 'user', 'Hardcore manga reader since 2010. Fan of dark fantasy and psychological thrillers.');
 
 -- Manga catalog
 INSERT IGNORE INTO manga (id, title, author, description, cover_url, genres, status, chapters, year, is_featured) VALUES

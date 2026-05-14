@@ -19,9 +19,8 @@ const ProfilePage = () => {
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  if (!user) return <Navigate to="/login" replace />;
-
   useEffect(() => {
+    if (!user) return;
     Promise.all([
       api.get('/users/profile'),
       api.get('/reviews/my'),
@@ -30,7 +29,9 @@ const ProfilePage = () => {
       setReviews(r.data);
       setForm({ username: p.data.username, bio: p.data.bio || '', password: '' });
     }).catch(console.error).finally(() => setLoading(false));
-  }, []);
+  }, [user]);
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const saveProfile = async () => {
     setSaving(true);

@@ -13,14 +13,15 @@ const FavoritesPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
-  if (!user) return <Navigate to="/login" replace />;
-
   useEffect(() => {
+    if (!user) return;
     api.get('/favorites')
       .then(r => setFavorites(r.data))
       .catch(console.error)
       .finally(() => setLoading(false));
-  }, []);
+  }, [user]);
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const filtered = search
     ? favorites.filter(m => m.title.toLowerCase().includes(search.toLowerCase()) || m.author.toLowerCase().includes(search.toLowerCase()))

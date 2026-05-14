@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -149,10 +149,8 @@ const AdminPage = () => {
   const [showMangaModal, setShowMangaModal] = useState(false);
   const [editingManga, setEditingManga] = useState(null);
 
-  if (!user) return <Navigate to="/login" replace />;
-  if (!isAdmin) return <Navigate to="/" replace />;
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
+    setLoading(true);
     try {
       const [s, u, m] = await Promise.all([
         api.get('/admin/stats'),
@@ -160,16 +158,23 @@ const AdminPage = () => {
         api.get('/manga?limit=50&sort=created_at&order=DESC'),
       ]);
       setStats(s.data);
-      setUsers(u.data.users);
-      setManga(m.data.manga);
+      setUsers(u.data.users || []);
+      setManga(m.data.manga || []);
     } catch (err) {
-      toast.error('Failed to load admin data');
+      const msg = err.response?.data?.error || err.message || 'Network error';
+      toast.error(`Failed to load admin data: ${msg}`);
+      console.error('Admin load error:', err.response?.status, msg);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  useEffect(() => { loadData(); }, []);
+  useEffect(() => {
+    if (user && isAdmin) loadData();
+  }, [user, isAdmin, loadData]);
+
+  if (!user) return <Navigate to="/login" replace />;
+  if (!isAdmin) return <Navigate to="/" replace />;
 
   const toggleBan = async (id) => {
     try {
