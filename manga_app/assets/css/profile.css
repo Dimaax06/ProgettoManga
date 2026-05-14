@@ -1,0 +1,96 @@
+body{
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial;
+}
+
+.profile-container,
+.reviews-page{
+    max-width:1000px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.profile-card{
+    background:#181818;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#e50914;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+}
+
+.role{
+    color:#999;
+}
+
+.stats{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+}
+
+.stat-box{
+    flex:1;
+    background:#222;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.stat-box h2{
+    color:#e50914;
+    margin:0;
+}
+
+.profile-buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+}
+
+.profile-buttons a{
+    flex:1;
+    text-align:center;
+    padding:14px;
+    background:#e50914;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    transition:.2s;
+}
+
+.profile-buttons a:hover{
+    transform:translateY(-3px);
+}
+
+.review-card{
+    background:#181818;
+    margin-top:20px;
+    padding:25px;
+    border-radius:18px;
+}
+
+.review-stars{
+    margin:10px 0;
+    font-size:20px;
+}
+
+.review-comment{
+    color:#ddd;
+}

@@ -1,0 +1,188 @@
+
+/* =======================
+   PAGINA GENERALE
+======================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* HEADER */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 25px;
+    background: #141414;
+    border-bottom: 1px solid #222;
+}
+
+.header-btn {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    background: #e50914;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* =======================
+   LAYOUT MANGA
+======================= */
+.manga-page {
+    display: flex;
+    gap: 30px;
+
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* COVER GRANDE */
+.manga-cover-big img {
+    width: 280px;
+    height: 420px;
+    object-fit: cover;
+
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* INFO */
+.manga-details {
+    flex: 1;
+}
+
+.manga-details h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* TESTI */
+.manga-details p {
+    color: #ccc;
+    margin: 6px 0;
+}
+
+/* =======================
+   GENERI
+======================= */
+.generi-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin: 15px 0;
+}
+
+.genere-tag {
+    background: #2a2a2a;
+    color: #ddd;
+
+    padding: 5px 10px;
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+/* =======================
+   BOX DESCRIZIONE
+======================= */
+.descrizione-box {
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 10px;
+
+    margin-top: 15px;
+}
+
+/* =======================
+   RATING
+======================= */
+.rating-box {
+    margin-top: 15px;
+    padding: 10px;
+    background: #1a1a1a;
+    border-radius: 8px;
+
+    color: #f1f1f1;
+}
+
+/* =======================
+   FORM RECENSIONE
+======================= */
+.review-form-container {
+    max-width: 900px;
+    margin: 30px auto;
+
+    background: #141414;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.review-form-container h2 {
+    margin-bottom: 10px;
+}
+
+.review-form-container select,
+.review-form-container textarea {
+    width: 100%;
+    padding: 10px;
+
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #222;
+    color: white;
+}
+
+.review-form-container button {
+    margin-top: 10px;
+    width: 100%;
+
+    padding: 10px;
+    background: #e50914;
+    border: none;
+
+    color: white;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+/* =======================
+   RECENSIONI
+======================= */
+.reviews-section {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.review-card {
+    background: #1c1c1c;
+    padding: 15px;
+
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+/* LOGIN WARNING */
+.login-warning {
+    text-align: center;
+    margin: 20px;
+    color: #aaa;
+}

@@ -1,0 +1,636 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* HEADER */
+.admin-header {
+    background: #1e1e1e;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 3px solid #e63946;
+}
+
+.admin-header h1 {
+    margin: 0;
+}
+
+/* CONTAINER */
+.admin-container {
+    padding: 25px;
+}
+
+/* BOTTONI */
+.admin-btn {
+    display: inline-block;
+    background: #e63946;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.admin-btn:hover {
+    background: #ff4d5a;
+    transform: scale(1.05);
+}
+
+/* TABELLA */
+.admin-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.admin-table th {
+    background: #222;
+}
+
+/* AZIONI */
+.action-link {
+    color: #e63946;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+/* FORM */
+.admin-form {
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-form input,
+.admin-form textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.admin-form button {
+    background: #e63946;
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-form button:hover {
+    background: #ff4d5a;
+}
+
+/* CONTAINER SCROLL */
+.admin-table-container {
+    max-height: 380px;
+    overflow-y: auto;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: #141414;
+    border: 1px solid #222;
+}
+
+/* SCROLLBAR STILE NETFLIX */
+.admin-table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.admin-table-container::-webkit-scrollbar-track {
+    background: #141414;
+    border-radius: 10px;
+}
+
+.admin-table-container::-webkit-scrollbar-thumb {
+    background: #e50914; /* rosso Netflix */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.admin-table-container::-webkit-scrollbar-thumb:hover {
+    background: #ff1a1a;
+}
+
+/* FIREFOX SUPPORT */
+.admin-table-container {
+    scrollbar-width: thin;
+    scrollbar-color: #e50914 #141414;
+}
+
+
+/* BACKGROUND GENERALE */
+.admin-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* CARD CENTRALE */
+.admin-card {
+    width: 500px;
+    background: #141414;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* TITOLO */
+.admin-form h2 {
+    color: #e50914;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* GRID INPUT */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* INPUT STYLE */
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #222;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* TEXTAREA PIÙ GRANDE */
+.admin-form textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+/* FILE INPUT */
+.file-box {
+    margin: 10px 0;
+}
+
+/* BOTTONE */
+.admin-form button {
+    width: 100%;
+    padding: 12px;
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.admin-form button:hover {
+    background: #ff1a1a;
+    transform: scale(1.02);
+}
+
+
+/* LAYOUT CENTRATO */
+.admin-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* CARD */
+.admin-card {
+    width: 520px;
+    background: #141414;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* TITOLO */
+.admin-form h2 {
+    text-align: center;
+    color: #e50914;
+    margin-bottom: 20px;
+}
+
+/* GRID INPUT */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* INPUT STYLE */
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #222;
+    color: white;
+}
+
+/* TEXTAREA */
+.admin-form textarea {
+    min-height: 100px;
+}
+
+/* GENERI */
+.generi-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.genere-item {
+    background: #222;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* BUTTON */
+.admin-form button {
+    width: 100%;
+    padding: 12px;
+    background: #e50914;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-form button:hover {
+    background: #ff1a1a;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    color: white;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+}
+
+.admin-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+
+    color: white;
+    text-decoration: none;
+
+    background: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-card {
+    background: #1c1c1c;
+    padding: 15px;
+
+    border-radius: 10px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+}
+
+.manga-title {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.comment {
+    margin: 10px 0;
+}
+
+.delete-btn {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+
+
+.stats {
+    display: flex;
+    gap: 15px;
+
+    margin: 20px 0;
+}
+
+
+.stat-box {
+    flex: 1;
+
+    background: #1c1c1c;
+    padding: 15px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    color: white;
+    text-decoration: none;
+
+    transition: 0.2s ease;
+
+    display: block;
+}
+
+.stat-box:hover {
+    background: #e50914;
+    transform: translateY(-3px);
+}
+
+.stat-box strong {
+    display: block;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.admin-menu a {
+    background: #333;
+    color: white;
+
+    padding: 10px;
+    border-radius: 6px;
+
+    text-decoration: none;
+}
+
+.admin-menu a:hover {
+    background: #e50914;
+}
+
+.delete-form {
+    margin-top: 10px;
+}
+
+.delete-btn {
+    background: transparent;
+    border: 1px solid #ff4d4d;
+
+    color: #ff4d4d;
+
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-card {
+    background: #1c1c1c;
+    padding: 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info span {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.banned {
+    color: #ff4d4d;
+}
+
+.active {
+    color: #4dff88;
+}
+
+.ban-btn, .unban-btn {
+    text-decoration: none;
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.ban-btn {
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.unban-btn {
+    color: #4dff88;
+    border: 1px solid #4dff88;
+}
+
+/* =========================
+   MODAL BACKDROP
+========================= */
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* MODAL ATTIVA */
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =========================
+   MODAL BOX
+========================= */
+.modal-content {
+    width: min(440px, 92%);
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-radius: 18px;
+    padding: 26px;
+
+    text-align: center;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    transform: scale(0.92);
+    opacity: 0;
+
+    transition: all 0.2s ease;
+}
+
+/* quando modal è attiva */
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* =========================
+   TITLE
+========================= */
+.modal-content h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* =========================
+   BUTTON AREA
+========================= */
+.modal-actions {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+}
+
+/* =========================
+   BASE BUTTON
+========================= */
+.modal-actions button {
+    flex: 1;
+
+    padding: 11px 14px;
+
+    border-radius: 12px;
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+}
+
+.modal-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.modal-actions button:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   CONFIRM BUTTON
+========================= */
+.btn-confirm {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+}
+
+.btn-confirm:hover {
+    box-shadow: 0 12px 28px rgba(239, 68, 68, 0.45);
+}
+
+/* =========================
+   CANCEL BUTTON
+========================= */
+.btn-cancel {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-cancel:hover {
+    background: #e5e7eb;
+}

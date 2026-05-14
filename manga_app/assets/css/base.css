@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    padding: 20px;
+    background: #1e1e1e;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* LINK */
+a {
+    color: #e63946;
+    text-decoration: none;
+    margin: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN / REGISTER AREA */
+.auth-links {
+    margin-top: 10px;
+}
+
+/* MESSAGGI RUOLO */
+.admin-msg {
+    color: #e63946;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.user-msg {
+    color: #4caf50;
+    margin-top: 15px;
+}
+
+/* BOTTONE ADMIN */
+.admin-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
+    background: #e63946;
+    color: white;
+    border-radius: 5px;
+}
+
+.admin-btn:hover {
+    background: #c92f3a;
+}
+
+.manga-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+/* ITEM LISTA */
+.manga-item {
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 15px;
+    transition: 0.2s;
+}
+
+.manga-item:hover {
+    background: #222;
+    transform: scale(1.01);
+}
+
+/* IMMAGINE PICCOLA */
+.manga-img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* TESTO */
+.manga-info h3 {
+    margin: 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.manga-info p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.logout-btn {
+    margin-left: 10px;
+    padding: 6px 10px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #ff4d5a;
+}
+
+.genere-tag {
+    background: #2a2a2a;
+    color: #ddd;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+}
+
+.generi-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 220px;
+
+    gap: 6px;
+
+    margin-top: 8px;
+}
+
+.logo-title {
+    margin: 0;
+}
+
+.logo-title img {
+    height: 150px;   /* puoi aumentare o diminuire */
+    width: auto;
+
+    display: block;
+}
