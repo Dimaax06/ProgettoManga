@@ -35,7 +35,13 @@ const TrendingSection = ({ manga }) => {
 
         <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-4">
           {manga.map((m, i) => {
-            const genres = typeof m.genres === 'string' ? JSON.parse(m.genres || '[]') : (m.genres || []);
+            const genres = (() => {
+              const g = m?.genres;
+              if (!g) return [];
+              if (Array.isArray(g)) return g;
+              try { const p = JSON.parse(g); return Array.isArray(p) ? p : []; }
+              catch { return String(g).split(',').map(s => s.trim()).filter(Boolean); }
+            })();
             const rating = parseFloat(m.avg_rating || 0);
             return (
               <motion.div

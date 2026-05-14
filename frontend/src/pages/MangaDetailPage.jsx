@@ -160,7 +160,13 @@ const MangaDetailPage = () => {
     </div>
   );
 
-  const genres = typeof manga.genres === 'string' ? JSON.parse(manga.genres || '[]') : (manga.genres || []);
+  const genres = (() => {
+    const g = manga?.genres;
+    if (!g) return [];
+    if (Array.isArray(g)) return g;
+    try { const p = JSON.parse(g); return Array.isArray(p) ? p : []; }
+    catch { return String(g).split(',').map(s => s.trim()).filter(Boolean); }
+  })();
   const rating = parseFloat(manga.avg_rating || 0);
 
   return (

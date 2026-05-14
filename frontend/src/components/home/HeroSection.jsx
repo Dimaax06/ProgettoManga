@@ -46,7 +46,13 @@ const HeroSection = ({ featured }) => {
   };
 
   const manga = slides[current];
-  const genres = manga ? (typeof manga.genres === 'string' ? JSON.parse(manga.genres || '[]') : (manga.genres || [])) : [];
+  const genres = (() => {
+    const g = manga?.genres;
+    if (!g) return [];
+    if (Array.isArray(g)) return g;
+    try { const p = JSON.parse(g); return Array.isArray(p) ? p : []; }
+    catch { return String(g).split(',').map(s => s.trim()).filter(Boolean); }
+  })();
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0a0a]">

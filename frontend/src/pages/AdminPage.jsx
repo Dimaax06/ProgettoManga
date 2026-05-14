@@ -33,7 +33,13 @@ const MangaModal = ({ manga, onClose, onSave }) => {
   const [genreInput, setGenreInput] = useState('');
   const genres = ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Sci-Fi', 'Seinen', 'Shonen', 'Shoujo', 'Slice of Life', 'Sports', 'Supernatural', 'Thriller'];
 
-  const currentGenres = typeof form.genres === 'string' ? JSON.parse(form.genres || '[]') : (form.genres || []);
+  const currentGenres = (() => {
+    const g = form?.genres;
+    if (!g) return [];
+    if (Array.isArray(g)) return g;
+    try { const p = JSON.parse(g); return Array.isArray(p) ? p : []; }
+    catch { return String(g).split(',').map(s => s.trim()).filter(Boolean); }
+  })();
   const toggleGenre = (g) => {
     const updated = currentGenres.includes(g) ? currentGenres.filter(x => x !== g) : [...currentGenres, g];
     setForm(f => ({ ...f, genres: updated }));
