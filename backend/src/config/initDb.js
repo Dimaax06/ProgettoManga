@@ -47,6 +47,21 @@ async function initializeDatabase() {
       console.log(`✅ Database has ${count} manga already`);
     }
 
+    // 4. Always ensure demo accounts exist with correct role + password (idempotent upsert)
+    const adminHash = '$2a$12$gf4BTWCwQ.tMDMxpbiC24uX64X9OPhqMDHCY/bRenP8fDaAZJzSQm';
+    const demoHash = '$2a$12$EIACPFj9GBw1GoMoZ44Q/uHmTQciqZE35uBSj2cdfYZL9ohZ2XFs2';
+    await conn.query(
+      `INSERT INTO users (id, username, email, password_hash, role) VALUES (?, ?, ?, ?, 'admin')
+       ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash), role = 'admin', is_banned = 0`,
+      ['admin-uuid-0001', 'DiMangaX_Admin', 'admin@dimangax.com', adminHash]
+    );
+    await conn.query(
+      `INSERT INTO users (id, username, email, password_hash, role) VALUES (?, ?, ?, ?, 'user')
+       ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash), is_banned = 0`,
+      ['user-uuid-0001', 'OtakuPrime', 'demo@dimangax.com', demoHash]
+    );
+    console.log('✅ Demo accounts verified (admin@dimangax.com / demo@dimangax.com)');
+
     return true;
   } catch (err) {
     console.error('❌ Database initialization failed:', err.message);
